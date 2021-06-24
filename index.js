@@ -48,7 +48,11 @@ client.connect(err => {
     })
 
     app.post('/productsByKeys', (req, res) => {
-      productsCollection
+      const productkeys = req.body;
+      productsCollection.find({key: {$in: productkeys} })
+      .toArray((err, documents) => {
+        res.send(documents);
+      })
     })
 });
 
