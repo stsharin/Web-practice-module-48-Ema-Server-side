@@ -15,6 +15,10 @@ app.use(cors());
 const port = 5000
 // console.log(process.env.DB_NAME)
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
@@ -56,9 +60,7 @@ client.connect(err => {
     })
 });
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-  })
+
 
 
 app.listen(process.env.PORT || port)
